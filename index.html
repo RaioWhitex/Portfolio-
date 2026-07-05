@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verificação de acesso — Gustavo Steferson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gate.css">
+</head>
+<body class="gate-body">
+
+  <!-- Fundo: mármore com veios de ouro fluindo (100% código, sem imagens externas) -->
+  <div class="liquid-bg" aria-hidden="true">
+    <div class="marble-base"></div>
+
+    <svg class="marble-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f5d576"/>
+          <stop offset="45%" stop-color="#c9a227"/>
+          <stop offset="100%" stop-color="#8a6a14"/>
+        </linearGradient>
+        <linearGradient id="goldGradBright" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="transparent"/>
+          <stop offset="50%" stop-color="#fff3c4"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </linearGradient>
+        <filter id="liquid-distort" x="-30%" y="-30%" width="160%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.010 0.016" numOctaves="2" seed="7" result="turb">
+            <animate attributeName="baseFrequency" dur="22s" values="0.010 0.016;0.015 0.021;0.010 0.016" repeatCount="indefinite"/>
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="turb" scale="30" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+
+      <g class="veins-group">
+        <path class="vein-main" d="M -50,140 C 200,220 320,40 520,180 C 720,320 860,120 1250,260" stroke="url(#goldGrad)" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.9"/>
+        <path class="vein-main" d="M -80,560 C 160,480 340,640 560,500 C 780,360 940,560 1260,480" stroke="url(#goldGrad)" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path class="vein-thin" d="M 100,700 C 260,600 380,700 520,600 C 640,520 760,600 900,540" stroke="url(#goldGrad)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path class="vein-thin" d="M 300,60 C 400,140 460,60 560,120 C 660,180 720,100 820,160" stroke="url(#goldGrad)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+        <path class="vein-thin" d="M 900,20 C 950,120 1020,160 1100,260 C 1160,340 1180,420 1150,520" stroke="url(#goldGrad)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
+
+        <!-- brilho que percorre os veios principais, como um rio fluindo -->
+        <path class="vein-flow" d="M -50,140 C 200,220 320,40 520,180 C 720,320 860,120 1250,260" stroke="url(#goldGradBright)" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path class="vein-flow vein-flow-2" d="M -80,560 C 160,480 340,640 560,500 C 780,360 940,560 1260,480" stroke="url(#goldGradBright)" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+        <!-- respingos de ouro -->
+        <circle cx="180" cy="200" r="2" fill="#f5d576" opacity="0.7"/>
+        <circle cx="430" cy="150" r="1.5" fill="#f5d576" opacity="0.6"/>
+        <circle cx="620" cy="260" r="2.5" fill="#f5d576" opacity="0.8"/>
+        <circle cx="780" cy="180" r="1.5" fill="#f5d576" opacity="0.5"/>
+        <circle cx="980" cy="300" r="2" fill="#f5d576" opacity="0.7"/>
+        <circle cx="240" cy="540" r="2" fill="#f5d576" opacity="0.6"/>
+        <circle cx="500" cy="480" r="1.5" fill="#f5d576" opacity="0.5"/>
+        <circle cx="760" cy="440" r="2.5" fill="#f5d576" opacity="0.7"/>
+        <circle cx="1020" cy="500" r="2" fill="#f5d576" opacity="0.6"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Botão de alternância de tema -->
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar entre tema claro e escuro">
+    <span class="icon-sun">☀</span>
+    <span class="icon-moon">☾</span>
+  </button>
+
+  <div class="gate-card-wrap">
+    <div class="gate-card" id="gate-card">
+      <span class="gate-card-shine" aria-hidden="true"></span>
+
+      <div class="gate-card-inner">
+        <p class="eyebrow">Verificação de acesso</p>
+        <h1>Antes de entrar</h1>
+        <p class="gate-text">
+          Deixe seu nome e e-mail para eu saber quem visitou meu portfólio.
+          Leva só alguns segundos.
+        </p>
+
+        <form id="gate-form" novalidate>
+          <label for="visitor-name">Nome</label>
+          <input type="text" id="visitor-name" name="visitor-name" required placeholder="Seu nome">
+
+          <label for="visitor-email">E-mail</label>
+          <input type="email" id="visitor-email" name="visitor-email" required placeholder="seu@email.com">
+
+          <button type="submit" class="btn primary" id="gate-submit">Continuar para o portfólio →</button>
+        </form>
+
+        <p class="gate-status" id="gate-status"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="gate.js"></script>
+</body>
+</html>
